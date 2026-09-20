@@ -5,13 +5,41 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
 
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
-  };
+    try {
+        const response = await fetch(
+            "http://127.0.0.1:8000/api/users/register",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password,
+                    role: "user"
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("User registered successfully!");
+            console.log(data);
+        } else {
+            alert("Registration failed!");
+            console.log(data);
+        }
+
+    } catch (error) {
+        console.log("Error:", error);
+        alert("Cannot connect to backend!");
+    }
+};
 
   return (
     <div>

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
+
 from app.database import Base, engine
-from app import models
+from app.api.user import router as user_router
 
 
 Base.metadata.create_all(bind=engine)
@@ -11,6 +12,9 @@ app = FastAPI(
     description="Backend API for the Gaming Event Ticket Platform",
     version="1.0.0"
 )
+
+
+app.include_router(user_router)
 
 
 @app.get("/")
@@ -24,6 +28,5 @@ def root():
 @app.get("/api/health")
 def health_check():
     return {
-        "success": True,
-        "message": "API is healthy"
+        "status": "healthy"
     }
