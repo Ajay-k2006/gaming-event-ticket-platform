@@ -77,7 +77,6 @@ def login_user(user: UserLogin, db: Session = Depends(get_db)):
         "success": True,
         "message": "Login successful",
         "user": {
-            "id": existing_user.id,
             "name": existing_user.name,
             "email": existing_user.email,
             "role": existing_user.role
