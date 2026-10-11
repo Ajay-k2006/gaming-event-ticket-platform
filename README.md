@@ -1,7 +1,7 @@
 # Gaming Event Ticket Platform
 
 ## Project Overview
-A web application for users to view gaming events, register, book tickets, and create payment records.
+The Gaming Event Ticket Platform is a web application that allows users to register, log in, view gaming events, book tickets, and create payment records.
 
 ## Technologies Used
 - Frontend: React.js
@@ -9,50 +9,58 @@ A web application for users to view gaming events, register, book tickets, and c
 - Database: SQLite
 - API Testing: Swagger UI
 
-## Modules
+## Features
 1. User Registration
 2. User Login
 3. Event Management
 4. Ticket Management
-5. Ticket Registration
-6. Payment Management
+5. Ticket Booking
+6. Payment Record Management
 
 ## Project Structure
-- `frontend/` – React user interface
-- `backend/app/api/` – API endpoints
-- `backend/app/models/` – Database models
-- `backend/app/schemas/` – Data schemas
-- `backend/gaming_event.db` – SQLite database
+- `backend/` - FastAPI backend and SQLite database
+- `frontend/` - React frontend
+- `docs/` - Project diagrams and documentation
 
 ## How to Run
 
-### Backend
-Open a terminal in the `backend` folder:
+### 1. Start the Backend
+Open a terminal in the project root and run:
 
 ```bash
+cd backend
 python -m uvicorn app.main:app --reload --port 8000
 ```
 
-API documentation: http://127.0.0.1:8000/docs
+Backend API: http://127.0.0.1:8000
 
-### Frontend
-Open another terminal in the `frontend` folder:
+Swagger documentation: http://127.0.0.1:8000/docs
+
+### 2. Start the Frontend
+Open another terminal and run:
 
 ```bash
+cd frontend
 npm start
 ```
 
-Frontend URL: http://localhost:3000
-
-## Database
-SQLite stores users, events, tickets, registrations, and payment records.
+Frontend: http://localhost:3000
 
 ## Testing
-- Registration and login
-- Event and ticket APIs
-- Ticket booking and quantity validation
-- Payment record creation
-- Database verification
+- User registration and login tested
+- Event and ticket APIs tested
+- Ticket booking verified in SQLite
+- Payment record creation verified in SQLite
+- Backend health endpoint tested
 
 ## Limitation
-The payment module currently creates payment records. A real payment gateway has not been integrated.
+The payment module creates payment records only. A real payment gateway has not been integrated.
+
+## Database
+The application uses SQLite to store users, events, tickets, registrations, and payment records.
+
+## Future Enhancements
+- Integrate a real payment gateway
+- Improve user authentication and authorization
+- Add event search and filtering
+- Display booking history and payment status
